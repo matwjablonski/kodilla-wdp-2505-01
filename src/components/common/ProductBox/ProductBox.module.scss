@@ -69,6 +69,18 @@
     }
   }
 
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .oldPrice {
+      color: #888;
+      text-decoration: line-through black;
+      font-size: 14px;
+    }
+  }
+
   .actions {
     padding: 15px 10px 10px 10px;
     display: flex;
