@@ -1,52 +1,22 @@
 {
-  "env": {
-     "es6": true,
-     "browser": true,
-     "node": true,
-     "jest": true
-  },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "requireConfigFile": false,
+    "ecmaVersion": 2020,
     "sourceType": "module",
     "ecmaFeatures": {
-        "jsx": true
+      "jsx": true
     }
   },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
   },
-  "plugins": [
-    "react"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "react-app"
-  ],
+  "extends": ["react-app", "eslint:recommended"],
   "rules": {
-    "indent": [
-      "error",
-      2,
-      {"SwitchCase": 1}
-    ],
-    "quotes": [
-      "error",
-      "single",
-      {"allowTemplateLiterals": true}
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
-    "no-console": "warn",
-    "no-debugger": "error",
-    "jsx-a11y/anchor-is-valid": "off"
+    "no-unused-vars": "warn",
+    "no-console": "off"
   }
 }
