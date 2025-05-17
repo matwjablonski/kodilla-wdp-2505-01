@@ -7,16 +7,22 @@
   margin-top: 40px;
 
   &:hover {
-    border-color: $primary;
+    border-color: b6b6b6;
+    text-decoration: none;
 
     .content {
-    color: $primary;
+      color: $primary;
     }
 
     .iconWrapper {
-      color: $primary;
+      color: white;
 
       &::after {
+        border-color: $primary;
+        background-color: $primary;
+      }
+
+      &::before {
         border-color: $primary;
       }
     }
