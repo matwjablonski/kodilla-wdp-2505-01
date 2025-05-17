@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import buttonStyles from '../Button/Button.module.scss';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -39,10 +40,16 @@ const ProductBox = ({ name, price, promo, stars, oldPrice, isFavorite, isCompare
     <div className={styles.line}></div>
     <div className={styles.actions}>
       <div className={styles.outlines}>
-        <Button variant='outline' className={isFavorite ? styles.active : ''}>
+        <Button
+          variant='outline'
+          className={isFavorite ? buttonStyles.outlineActive : ''}
+        >
           <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
         </Button>
-        <Button variant='outline' className={isCompared ? styles.active : ''}>
+        <Button
+          variant='outline'
+          className={isCompared ? buttonStyles.outlineActive : ''}
+        >
           <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
         </Button>
       </div>
