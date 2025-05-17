@@ -39,3 +39,19 @@
     color: #ffffff;
   }
 }
+
+.active {
+  background-color: $primary;
+  color: #ffffff;
+  border: 1px solid black;
+
+  svg {
+    color: #ffffff;
+  }
+
+  &:hover {
+    background-color: lighten($primary, 10%);
+    border-color: lighten($primary, 10%);
+  }
+}
+
