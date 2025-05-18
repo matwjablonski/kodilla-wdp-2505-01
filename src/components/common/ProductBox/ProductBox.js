@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCompared, addToCompare, removeFromCompare } from '../../../redux/compareRedux';
+import {
+  getCompared,
+  addToCompare,
+  removeFromCompare,
+} from '../../../redux/compareRedux';
 import buttonStyles from '../Button/Button.module.scss';
 
 import styles from './ProductBox.module.scss';
@@ -53,9 +57,10 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice }) => {
           <Button
             variant='outline'
             className={isComparedActive ? buttonStyles.active : ''}
-            onClick={() =>
-              dispatch(isComparedActive ? removeFromCompare(id) : addToCompare(id))
-            }
+            onClick={e => {
+              e.preventDefault();
+              dispatch(isComparedActive ? removeFromCompare(id) : addToCompare(id));
+            }}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
@@ -68,7 +73,8 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice }) => {
         </div>
       </div>
     </div>
-)};
+  );
+};
 
 ProductBox.propTypes = {
   id: PropTypes.string.isRequired,
