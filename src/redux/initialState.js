@@ -14,6 +14,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (1).jpg',
       newFurniture: true,
     },
     {
@@ -23,6 +24,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (2).jpg',
       newFurniture: true,
       oldPrice: 40,
     },
@@ -33,6 +35,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (3).jpg',
       newFurniture: true,
     },
     {
@@ -42,6 +45,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (4).jpg',
       newFurniture: true,
       oldPrice: 50,
     },
@@ -52,6 +56,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (5).jpg',
       newFurniture: true,
     },
     {
@@ -61,6 +66,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (6).jpg',
       newFurniture: true,
       oldPrice: 440,
     },
@@ -71,6 +77,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (7).jpg',
       newFurniture: true,
     },
     {
@@ -80,6 +87,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (8).jpg',
       newFurniture: true,
     },
     {
@@ -89,6 +97,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (9).jpg',
       newFurniture: true,
     },
     {
@@ -98,6 +107,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (10).jpg',
       newFurniture: true,
     },
     {
@@ -107,6 +117,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (11).jpg',
       newFurniture: true,
     },
     {
@@ -116,6 +127,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (12).jpg',
       newFurniture: true,
     },
     {
@@ -125,6 +137,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (13).jpg',
       newFurniture: true,
     },
     {
@@ -134,6 +147,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (14).jpg',
       newFurniture: true,
     },
     {
@@ -143,6 +157,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (15).jpg',
       newFurniture: true,
     },
     {
@@ -152,6 +167,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (16).jpg',
       newFurniture: true,
     },
     {
@@ -161,6 +177,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (17).jpg',
       newFurniture: true,
     },
     {
@@ -170,6 +187,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (18).jpg',
       newFurniture: true,
     },
     {
@@ -179,6 +197,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (19).jpg',
       newFurniture: true,
     },
     {
@@ -188,6 +207,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (20).jpg',
       newFurniture: true,
     },
     {
@@ -197,6 +217,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (21).jpg',
       newFurniture: true,
     },
     {
@@ -206,6 +227,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (22).jpg',
       newFurniture: true,
     },
     {
@@ -215,6 +237,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (23).jpg',
       newFurniture: true,
     },
     {
@@ -224,6 +247,7 @@ const initialState = {
       price: 30,
       stars: 2,
       promo: 'sale',
+      image: '/images/bed/mbed (24).jpg',
       newFurniture: true,
     },
   ],
