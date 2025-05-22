@@ -7,7 +7,7 @@
   margin-top: 40px;
 
   &:hover {
-    border-color: b6b6b6;
+    border-color: #b6b6b6;
     text-decoration: none;
 
     .content {
@@ -15,7 +15,7 @@
     }
 
     .iconWrapper {
-      color: white;
+      color: #ffffff;
 
       &::after {
         border-color: $primary;
