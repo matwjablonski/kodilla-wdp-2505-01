@@ -14,7 +14,7 @@ import Button from '../Button/Button';
 const ProductBox = ({ name, price, promo, stars, oldPrice, image }) => (
   <div className={styles.root}>
     <div className={styles.photo}>
-      <img src={image} alt='Bedroom'></img>
+      <img src={'/images/bed/' + image} alt='Bedroom'></img>
       {promo && <div className={styles.sale}>{promo}</div>}
       <div className={styles.buttons}>
         <Button variant='small'>Quick View</Button>
