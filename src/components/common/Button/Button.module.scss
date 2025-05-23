@@ -4,7 +4,7 @@
 // }
 
 .main {
-  background-color: #2a2a2a;
+  background-color: $text-color;
   color: #ffffff;
   font-size: 16px;
   line-height: 24px;
@@ -29,13 +29,13 @@
 .outline {
   display: inline-block;
   padding: 5px 10px;
-  border: 1px solid #2a2a2a;
-  color: #2a2a2a;
+  border: 1px solid $text-color;
+  color: $text-color;
   font-size: 13px;
   line-height: 22px;
 
   &:not(.noHover):hover {
-    background-color: #2a2a2a;
+    background-color: $text-color;
     color: #ffffff;
   }
 }
@@ -43,7 +43,7 @@
 .active {
   background-color: $primary;
   color: #ffffff;
-  border: 1px solid black;
+  border: 1px solid $text-color;
 
   svg {
     color: #ffffff;
