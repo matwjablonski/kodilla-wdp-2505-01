@@ -8,14 +8,30 @@ class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    animation: '',
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ animation: styles.fadeOut });
+
+    setTimeout(() => {
+      this.setState({
+        activePage: newPage,
+        animation: styles.fadeIn,
+      });
+    }, 500);
   }
 
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ animation: styles.fadeOut });
+
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        activePage: 0,
+        animation: styles.fadeIn,
+      });
+    }, 500);
   }
 
   render() {
@@ -66,7 +82,7 @@ class NewFurniture extends React.Component {
               </div>
             </div>
           </div>
-          <div className='row'>
+          <div className={`row ${this.state.animation}`}>
             {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
