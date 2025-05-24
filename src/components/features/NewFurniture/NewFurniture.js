@@ -6,31 +6,31 @@ import ProductBox from '../../common/ProductBox/ProductBox';
 
 class NewFurniture extends React.Component {
   state = {
-    activePage: 0,
     activeCategory: 'bed',
   };
-
-  handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
-  }
 
   handleCategoryChange(newCategory) {
     this.setState({ activeCategory: newCategory });
   }
 
   render() {
-    const { categories, products } = this.props;
-    const { activeCategory, activePage } = this.state;
+    const { categories, products, activePage, setActivePage } = this.props;
+    const { activeCategory } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
     const pagesCount = Math.ceil(categoryProducts.length / 8);
+
+    const LAST_PAGE_INDEX = pagesCount - 1;
+    const FIRST_PAGE_INDEX = 0;
+    if (activePage > LAST_PAGE_INDEX) setActivePage(activePage - 1);
+    else if (activePage < FIRST_PAGE_INDEX) setActivePage(activePage + 1);
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
       dots.push(
         <li>
           <a
-            onClick={() => this.handlePageChange(i)}
+            onClick={() => setActivePage(i)}
             className={i === activePage && styles.active}
           >
             page {i}
