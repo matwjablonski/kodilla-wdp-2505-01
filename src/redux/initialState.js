@@ -232,6 +232,7 @@ const initialState = {
   cart: {
     products: [],
   },
+  device:'desktop'
 };
 
 export default initialState;

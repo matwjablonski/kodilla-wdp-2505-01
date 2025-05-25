@@ -15,25 +15,39 @@ class NewFurniture extends React.Component {
   }
 
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ activeCategory: newCategory, activePage: 0 });
   }
 
   render() {
-    const { categories, products } = this.props;
+    const { categories, products, device } = this.props;
     const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+
+    //NOTE: wartości są orientacyjne - mogą się zmienić po wdrozeniu layoutu RWD z zadania 17
+    const itemsPerDevice = {
+      desktop:8,
+      tablet:3,
+      mobile:2,
+    }
+
+    const itemsPerPage = itemsPerDevice[device];
+    const pagesCount = Math.ceil(categoryProducts.length / itemsPerPage);
+
+    const visibleProducts = categoryProducts.slice(
+      activePage * itemsPerPage,
+      (activePage + 1) * itemsPerPage
+    );
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
       dots.push(
-        <li>
+        <li key={i}>
           <a
             onClick={() => this.handlePageChange(i)}
-            className={i === activePage && styles.active}
+            className={i === activePage ? styles.active : undefined}
           >
-            page {i}
+            page {i + 1}
           </a>
         </li>
       );
@@ -52,7 +66,7 @@ class NewFurniture extends React.Component {
                   {categories.map(item => (
                     <li key={item.id}>
                       <a
-                        className={item.id === activeCategory && styles.active}
+                        className={item.id === activeCategory ? styles.active : undefined}
                         onClick={() => this.handleCategoryChange(item.id)}
                       >
                         {item.name}
@@ -67,7 +81,7 @@ class NewFurniture extends React.Component {
             </div>
           </div>
           <div className='row'>
-            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
+            {visibleProducts.map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
               </div>
@@ -98,6 +112,7 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  device: PropTypes.string,
 };
 
 NewFurniture.defaultProps = {
