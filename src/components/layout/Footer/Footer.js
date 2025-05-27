@@ -84,15 +84,14 @@ const Footer = ({ children }) => (
                 <a href='#'>Shipping</a>
               </li>
             </ul>
+            <img src='./images/cards.png' alt='Supported credit cards' />
           </div>
-          <img src='./images/cards.png' alt='Supported credit cards' />
         </div>
       </div>
     </div>
     <div className={styles.bottomBar}>
       <div className='container'>
         <div className={styles.bottomFlex}>
-          <div />
           <div className={styles.copyright}>
             <p>© Copyright 2016 Bazar | All Rights Reserved</p>
           </div>
