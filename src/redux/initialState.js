@@ -16,6 +16,7 @@ const initialState = {
       promo: 'sale',
       image: 'mbed (1).jpg',
       newFurniture: true,
+      favorite: true,
     },
     {
       id: 'aenean-ru-bristique-2',
@@ -69,6 +70,7 @@ const initialState = {
       image: 'mbed (6).jpg',
       newFurniture: true,
       oldPrice: 440,
+
     },
     {
       id: 'aenean-ru-bristique-7',
