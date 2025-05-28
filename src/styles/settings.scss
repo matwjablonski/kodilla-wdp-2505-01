@@ -48,3 +48,17 @@ $text-color: $grayDarker;
 $form-border-color: $grayUltraDark;
 
 $search-hover-bg: rgba(0, 0, 0, 0.05);
+
+$hover-transition-bg: background-color 250ms ease;
+$hover-transition-color: color 250ms ease;
+$hover-transition-transform: transform 250ms ease;
+
+%hover-effect {
+    transition:
+        #{$hover-transition-bg},
+        #{$hover-transition-color},
+        #{$hover-transition-transform};
+    &:hover {
+        transform: translateY(-2px);
+    }
+}

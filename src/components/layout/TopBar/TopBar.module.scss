@@ -9,6 +9,7 @@
     padding: 0;
 
     li {
+      @extend %hover-effect;
       display: inline-block;
       line-height: 55px;
 
