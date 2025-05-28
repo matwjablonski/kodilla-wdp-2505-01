@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarRating from '../StarRating/StarRating';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,15 +12,24 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
-import { toggleFavorite } from '../../../redux/productsRedux';
+import { toggleFavorite, setUserRating } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
-  const dispatch=useDispatch();
+const ProductBox = ({
+  id,
+  name,
+  price,
+  promo,
+  stars,
+  oldPrice,
+  favorite,
+  userRating,
+}) => {
+  const dispatch = useDispatch();
 
   const handleToggleFavorite = e => {
     e.preventDefault();
-    dispatch(toggleFavorite(id))
-  }
+    dispatch(toggleFavorite(id));
+  };
 
   return (
     <div className={styles.root}>
@@ -35,22 +45,22 @@ const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
       <div className={styles.content}>
         <h5>{name}</h5>
         <div className={styles.stars}>
-          {[1, 2, 3, 4, 5].map(i => (
-            <a key={i} href='#'>
-              {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-              )}
-            </a>
-          ))}
+          <StarRating
+            rating={stars}
+            userRating={userRating}
+            onRate={rate => dispatch(setUserRating(id, rate))}
+          />
         </div>
       </div>
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline'onClick={handleToggleFavorite} className={favorite ? styles.favoriteActive : ''}>
-            <FontAwesomeIcon icon={faHeart} >Favorite</FontAwesomeIcon>
+          <Button
+            variant='outline'
+            onClick={handleToggleFavorite}
+            className={favorite ? styles.favoriteActive : ''}
+          >
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button variant='outline'>
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
@@ -65,7 +75,7 @@ const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
       </div>
     </div>
   );
-}
+};
 
 ProductBox.propTypes = {
   id: PropTypes.string,
