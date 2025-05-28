@@ -33,6 +33,7 @@
   }
 
   a {
+    @extend %hover-effect;
     color: $text-color;
     text-transform: uppercase;
     font-size: 12px;
