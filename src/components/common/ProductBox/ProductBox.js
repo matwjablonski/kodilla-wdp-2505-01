@@ -7,7 +7,6 @@ import {
   removeFromCompare,
 } from '../../../redux/compareRedux';
 import buttonStyles from '../Button/Button.module.scss';
-
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -17,11 +16,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id, name, price, promo, stars, oldPrice }) => {
+const ProductBox = ({ id, name, price, promo, stars, oldPrice, favorite }) => {
   const dispatch = useDispatch();
   const compared = useSelector(getCompared);
   const isComparedActive = compared.includes(id);
+
+  const handleToggleFavorite = e => {
+    e.preventDefault();
+    dispatch(toggleFavorite(id));
+  };
 
   return (
     <div className={styles.root}>
@@ -51,7 +56,11 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice }) => {
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            onClick={handleToggleFavorite}
+            className={favorite ? styles.favoriteActive : ''}
+          >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button
@@ -84,6 +93,7 @@ ProductBox.propTypes = {
   promo: PropTypes.string,
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
+  favorite: PropTypes.bool,
 };
 
 export default ProductBox;
