@@ -4,6 +4,7 @@
 // }
 
 .main {
+  @extend %hover-effect;
   background-color: $text-color;
   color: #ffffff;
   font-size: 16px;
