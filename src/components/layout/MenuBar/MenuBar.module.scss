@@ -23,29 +23,37 @@
         align-items: stretch;
       }
     }
+  }
 
-    a {
-      color: $text-color;
-      text-transform: uppercase;
-      font-size: 12px;
-      padding: 1rem;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      border-top: 4px solid #ffffff;
-      font-weight: 500;
-      letter-spacing: 1px;
+  .mobileOptionsMenu {
+    width: 100%;
+    background: $white;
+    top: 45px;
+    z-index: 10000;
+  }
 
-      &:hover,
-      &.active {
-        background-color: $primary;
-        color: #ffffff;
-        border-color: $primary;
-      }
+  a {
+    @extend %hover-effect;
+    color: $text-color;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border-top: 4px solid #ffffff;
+    font-weight: 500;
+    letter-spacing: 1px;
 
-      &.active {
-        border-color: $text-color;
-      }
+    &:hover,
+    &.active {
+      background-color: $primary;
+      color: #ffffff;
+      border-color: $primary;
+    }
+
+    &.active {
+      border-color: $text-color;
     }
   }
 }

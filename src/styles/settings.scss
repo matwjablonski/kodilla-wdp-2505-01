@@ -1,13 +1,64 @@
+// Color palette to use only in this file!!! {
+$red: #ff0000;
+$redDark: #b30000;
+$redLight: #ff6666;
+$orange: #d58e32;
+$orangeDark: #cc6600;
+$orangeLight: #ffb84d;
+$yellow: #ffff00;
+$yellowDark: #cccc00;
+$yellowLight: #ffff99;
+$green: #00cc00;
+$greenDark: #009900;
+$greenLight: #66ff66;
+$teal: #00cccc;
+$tealDark: #009999;
+$tealLight: #66ffff;
+$blue: #0000ff;
+$blueDark: #0000b3;
+$blueLight: #6666ff;
+$indigo: #4b0082;
+$indigoDark: #2e005d;
+$indigoLight: #9370db;
+$purple: #800080;
+$purpleDark: #4b004b;
+$purpleLight: #d580ff;
+$pink: #ff66cc;
+$pinkDark: #cc3399;
+$pinkLight: #ff99dd;
+$grayMedium: #434343;
+$grayDark: #363636;
+$grayDarker: #2a2a2a;
+$grayUltraDark: #292929;
+$white: #fff;
+// } Below this line you can change styles
+
 $base-padding: 24px;
 
-$header-topbar-bg: #434343;
-$header-bg: #363636;
+$header-topbar-bg: $grayMedium;
+$header-bg: $grayDark;
 
-$footer-claim-bg: #2a2a2a;
-$footer-bg: #363636;
+$footer-claim-bg: $grayDarker;
+$footer-bg: $grayDark;
 
-$primary: #d58e32;
+$primary: $orange;
 
-$text-color: #2a2a2a;
+$text-color: $grayDarker;
 
-$form-border-color: #292929;
+$form-border-color: $grayUltraDark;
+
+$search-hover-bg: rgba(0, 0, 0, 0.05);
+
+$hover-transition-bg: background-color 250ms ease;
+$hover-transition-color: color 250ms ease;
+$hover-transition-transform: transform 250ms ease;
+
+%hover-effect {
+    transition:
+        #{$hover-transition-bg},
+        #{$hover-transition-color},
+        #{$hover-transition-transform};
+    &:hover {
+        transform: translateY(-2px);
+    }
+}

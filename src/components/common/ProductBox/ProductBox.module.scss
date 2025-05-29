@@ -36,6 +36,10 @@
     .buttons {
       display: flex;
       justify-content: space-between;
+
+      opacity: 0;
+      pointer-events: none;
+
     }
   }
 
@@ -91,5 +95,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &:hover {
+    .photo {
+      .buttons {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    .actions {
+      .price {
+        > * {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+
+  .favoriteActive {
+    background-color:$primary;
   }
 }
