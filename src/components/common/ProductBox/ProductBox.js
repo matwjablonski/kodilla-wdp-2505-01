@@ -62,7 +62,7 @@ const ProductBox = ({
           <Button
             variant='outline'
             onClick={handleToggleFavorite}
-            className={isFavorite ? styles.favoriteActive : ''}
+            className={isFavorite ? buttonStyles.favoriteActive : ''}
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>

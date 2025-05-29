@@ -115,7 +115,7 @@
 .active {
   background-color: $primary;
   color: #ffffff;
-  border: 1px solid black;
+  border: 1px solid $text-color;
 
   svg {
     color: #ffffff;

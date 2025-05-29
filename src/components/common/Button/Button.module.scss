@@ -44,7 +44,7 @@
 .outlineActive {
   background-color: $primary;
   color: #ffffff;
-  border: 1px solid black;
+  border: 1px solid $text-color;
 
   svg {
     color: #ffffff;
@@ -53,5 +53,20 @@
 
 .outline.outlineActive:hover {
   background-color: lighten($primary, 10%);
-  border-color: lighten(black, 40%);
+  border-color: lighten($text-color, 40%);
+}
+
+.favoriteActive {
+  background-color: $primary;
+  color: #ffffff;
+  border: 1px solid $text-color;
+
+  svg {
+    color: #ffffff;
+  }
+}
+
+.outline.favoriteActive:hover {
+  background-color: lighten($primary, 10%);
+  border-color: lighten($text-color, 40%);
 }
