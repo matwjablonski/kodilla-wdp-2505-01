@@ -1,7 +1,7 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 import ProductBox from './ProductBox';
+import { Provider } from 'react-redux';
 import store from '../../../redux/store';
 
 describe('Component ProductBox', () => {
@@ -12,10 +12,10 @@ describe('Component ProductBox', () => {
           id='test-id'
           name='Test Product'
           price={100}
-          stars={3}
-          promo='sale'
+          stars={4}
+          promo='SALE'
+          oldPrice={150}
           isFavorite={false}
-          isCompared={false}
         />
       </Provider>
     );

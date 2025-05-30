@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getCompared,
+  addToCompare,
+  removeFromCompare,
+} from '../../../redux/compareRedux';
+import { toggleFavorite } from '../../../redux/productsRedux';
 import buttonStyles from '../Button/Button.module.scss';
-
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,24 +17,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
-import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({
-  id,
-  name,
-  price,
-  promo,
-  stars,
-  oldPrice,
-  isFavorite,
-  isCompared,
-}) => {
+const ProductBox = ({ id, name, price, promo, stars, oldPrice, isFavorite }) => {
   const dispatch = useDispatch();
+  const compared = useSelector(getCompared);
+  const isComparedActive = compared.includes(id);
 
   const handleToggleFavorite = e => {
     e.preventDefault();
     dispatch(toggleFavorite(id));
+  };
+
+  const handleToggleCompare = e => {
+    e.preventDefault();
+    dispatch(isComparedActive ? removeFromCompare(id) : addToCompare(id));
   };
 
   return (
@@ -68,7 +70,8 @@ const ProductBox = ({
           </Button>
           <Button
             variant='outline'
-            className={isCompared ? buttonStyles.outlineActive : ''}
+            className={isComparedActive ? buttonStyles.active : ''}
+            onClick={handleToggleCompare}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
@@ -85,7 +88,7 @@ const ProductBox = ({
 };
 
 ProductBox.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
@@ -93,7 +96,6 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
-  isCompared: PropTypes.bool,
 };
 
 export default ProductBox;

@@ -4,7 +4,7 @@
 // }
 
 .main {
-  @extend %hover-effect;
+  @extend %hover-effect !optional;
   background-color: $text-color;
   color: #ffffff;
   font-size: 16px;
@@ -28,6 +28,7 @@
 }
 
 .outline {
+  @extend %hover-effect;
   display: inline-block;
   padding: 5px 10px;
   border: 1px solid $text-color;
@@ -69,4 +70,19 @@
 .outline.favoriteActive:hover {
   background-color: lighten($primary, 10%);
   border-color: lighten($text-color, 40%);
+}
+
+.active {
+  background-color: $primary;
+  color: #ffffff;
+  border: 1px solid $text-color;
+
+  svg {
+    color: #ffffff;
+  }
+
+  &:hover {
+    background-color: lighten($primary, 10%);
+    border-color: lighten($primary, 10%);
+  }
 }
