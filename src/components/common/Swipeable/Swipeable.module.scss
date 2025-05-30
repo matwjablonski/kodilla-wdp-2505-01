@@ -1,0 +1,17 @@
+@import "../../../styles/settings.scss";
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.pageButton {
+  width: 150px;
+  background: $secondary;
+  &:hover {
+    background: $primary;
+    color: $secondary;
+  }
+  margin: 5px;
+}
