@@ -6,6 +6,7 @@ import {
   addToCompare,
   removeFromCompare,
 } from '../../../redux/compareRedux';
+import { toggleFavorite } from '../../../redux/productsRedux';
 import buttonStyles from '../Button/Button.module.scss';
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,9 +17,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id, name, price, promo, stars, oldPrice, favorite }) => {
+const ProductBox = ({ id, name, price, promo, stars, oldPrice, isFavorite }) => {
   const dispatch = useDispatch();
   const compared = useSelector(getCompared);
   const isComparedActive = compared.includes(id);
@@ -26,6 +26,11 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice, favorite }) => {
   const handleToggleFavorite = e => {
     e.preventDefault();
     dispatch(toggleFavorite(id));
+  };
+
+  const handleToggleCompare = e => {
+    e.preventDefault();
+    dispatch(isComparedActive ? removeFromCompare(id) : addToCompare(id));
   };
 
   return (
@@ -59,17 +64,14 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice, favorite }) => {
           <Button
             variant='outline'
             onClick={handleToggleFavorite}
-            className={favorite ? styles.favoriteActive : ''}
+            className={isFavorite ? buttonStyles.favoriteActive : ''}
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button
             variant='outline'
             className={isComparedActive ? buttonStyles.active : ''}
-            onClick={e => {
-              e.preventDefault();
-              dispatch(isComparedActive ? removeFromCompare(id) : addToCompare(id));
-            }}
+            onClick={handleToggleCompare}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
@@ -93,7 +95,7 @@ ProductBox.propTypes = {
   promo: PropTypes.string,
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
-  favorite: PropTypes.bool,
+  isFavorite: PropTypes.bool,
 };
 
 export default ProductBox;

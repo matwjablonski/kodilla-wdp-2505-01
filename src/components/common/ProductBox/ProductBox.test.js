@@ -8,7 +8,15 @@ describe('Component ProductBox', () => {
   it('should render without crashing', () => {
     const component = shallow(
       <Provider store={store}>
-        <ProductBox id='test-id' name='Test' price={10} stars={3} />
+        <ProductBox
+          id='test-id'
+          name='Test Product'
+          price={100}
+          stars={4}
+          promo='SALE'
+          oldPrice={150}
+          isFavorite={false}
+        />
       </Provider>
     );
     expect(component).toBeTruthy();

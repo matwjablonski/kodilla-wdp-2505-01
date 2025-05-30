@@ -4,7 +4,7 @@
 // }
 
 .main {
-  @extend %hover-effect;
+  @extend %hover-effect !optional;
   background-color: $text-color;
   color: #ffffff;
   font-size: 16px;
@@ -43,6 +43,36 @@
   }
 }
 
+.outlineActive {
+  background-color: $primary;
+  color: #ffffff;
+  border: 1px solid $text-color;
+
+  svg {
+    color: #ffffff;
+  }
+}
+
+.outline.outlineActive:hover {
+  background-color: lighten($primary, 10%);
+  border-color: lighten($text-color, 40%);
+}
+
+.favoriteActive {
+  background-color: $primary;
+  color: #ffffff;
+  border: 1px solid $text-color;
+
+  svg {
+    color: #ffffff;
+  }
+}
+
+.outline.favoriteActive:hover {
+  background-color: lighten($primary, 10%);
+  border-color: lighten($text-color, 40%);
+}
+
 .active {
   background-color: $primary;
   color: #ffffff;
@@ -57,4 +87,3 @@
     border-color: lighten($primary, 10%);
   }
 }
-
