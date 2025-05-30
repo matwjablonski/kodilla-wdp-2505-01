@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import buttonStyles from '../Button/Button.module.scss';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,13 +14,22 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
-  const dispatch=useDispatch();
+const ProductBox = ({
+  id,
+  name,
+  price,
+  promo,
+  stars,
+  oldPrice,
+  isFavorite,
+  isCompared,
+}) => {
+  const dispatch = useDispatch();
 
   const handleToggleFavorite = e => {
     e.preventDefault();
-    dispatch(toggleFavorite(id))
-  }
+    dispatch(toggleFavorite(id));
+  };
 
   return (
     <div className={styles.root}>
@@ -49,10 +59,17 @@ const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline'onClick={handleToggleFavorite} className={favorite ? styles.favoriteActive : ''}>
-            <FontAwesomeIcon icon={faHeart} >Favorite</FontAwesomeIcon>
+          <Button
+            variant='outline'
+            onClick={handleToggleFavorite}
+            className={isFavorite ? buttonStyles.favoriteActive : ''}
+          >
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            className={isCompared ? buttonStyles.outlineActive : ''}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
@@ -65,7 +82,7 @@ const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
       </div>
     </div>
   );
-}
+};
 
 ProductBox.propTypes = {
   id: PropTypes.string,
@@ -75,7 +92,8 @@ ProductBox.propTypes = {
   promo: PropTypes.string,
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
-  favorite: PropTypes.bool,
+  isFavorite: PropTypes.bool,
+  isCompared: PropTypes.bool,
 };
 
 export default ProductBox;
