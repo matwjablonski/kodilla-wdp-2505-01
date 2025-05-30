@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import buttonStyles from '../Button/Button.module.scss';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +14,17 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id, name, price, promo, stars, oldPrice, favorite, image }) => {
+const ProductBox = ({
+  id,
+  name,
+  price,
+  promo,
+  stars,
+  oldPrice,
+  isFavorite,
+  isCompared,
+  image,
+}) => {
   const dispatch = useDispatch();
 
   const handleToggleFavorite = e => {
@@ -53,11 +64,14 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice, favorite, image }
           <Button
             variant='outline'
             onClick={handleToggleFavorite}
-            className={favorite ? styles.favoriteActive : ''}
+            className={isFavorite ? buttonStyles.favoriteActive : ''}
           >
             <FontAwesomeIcon icon={faHeart} />
           </Button>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            className={isCompared ? buttonStyles.outlineActive : ''}
+          >
             <FontAwesomeIcon icon={faExchangeAlt} />
           </Button>
         </div>
@@ -79,7 +93,8 @@ ProductBox.propTypes = {
   promo: PropTypes.string,
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
-  favorite: PropTypes.bool,
+  isFavorite: PropTypes.bool,
+  isCompared: PropTypes.bool,
   image: PropTypes.string,
 };
 
