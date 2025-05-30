@@ -23,6 +23,7 @@ const ProductBox = ({
   oldPrice,
   isFavorite,
   isCompared,
+  image,
 }) => {
   const dispatch = useDispatch();
 
@@ -34,11 +35,12 @@ const ProductBox = ({
   return (
     <div className={styles.root}>
       <div className={styles.photo}>
+        <img src={'/images/bed/' + image} alt={name} />
         {promo && <div className={styles.sale}>{promo}</div>}
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+            <FontAwesomeIcon icon={faShoppingBasket} /> ADD TO CART
           </Button>
         </div>
       </div>
@@ -48,9 +50,9 @@ const ProductBox = ({
           {[1, 2, 3, 4, 5].map(i => (
             <a key={i} href='#'>
               {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+                <FontAwesomeIcon icon={faStar} />
               ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+                <FontAwesomeIcon icon={farStar} />
               )}
             </a>
           ))}
@@ -64,13 +66,13 @@ const ProductBox = ({
             onClick={handleToggleFavorite}
             className={isFavorite ? buttonStyles.favoriteActive : ''}
           >
-            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faHeart} />
           </Button>
           <Button
             variant='outline'
             className={isCompared ? buttonStyles.outlineActive : ''}
           >
-            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faExchangeAlt} />
           </Button>
         </div>
         <div className={styles.price}>
@@ -86,7 +88,6 @@ const ProductBox = ({
 
 ProductBox.propTypes = {
   id: PropTypes.string,
-  children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
   promo: PropTypes.string,
@@ -94,6 +95,7 @@ ProductBox.propTypes = {
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
   isCompared: PropTypes.bool,
+  image: PropTypes.string,
 };
 
 export default ProductBox;

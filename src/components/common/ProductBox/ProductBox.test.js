@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import ProductBox from './ProductBox';
 import store from '../../../redux/store';
 
+
 describe('Component ProductBox', () => {
   it('should render without crashing', () => {
     const component = shallow(
