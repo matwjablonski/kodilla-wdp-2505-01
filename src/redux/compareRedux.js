@@ -7,17 +7,17 @@ export const addToCompare = payload => ({ type: ADD_TO_COMPARE, payload });
 export const removeFromCompare = payload => ({ type: REMOVE_FROM_COMPARE, payload });
 
 const compareReducer = (statePart = [], action) => {
-    switch (action.type) {
-        case ADD_TO_COMPARE:
-            if (statePart.includes(action.payload) || statePart.length >= 4) return statePart;
-            return [...statePart, action.payload];
+  switch (action.type) {
+    case ADD_TO_COMPARE:
+      if (statePart.includes(action.payload) || statePart.length >= 4) return statePart;
+      return [...statePart, action.payload];
 
-        case REMOVE_FROM_COMPARE:
-            return statePart.filter(id => id !== action.payload);
+    case REMOVE_FROM_COMPARE:
+      return statePart.filter(id => id !== action.payload);
 
-        default:
-            return statePart;
-    }
+    default:
+      return statePart;
+  }
 };
 
 export default compareReducer;

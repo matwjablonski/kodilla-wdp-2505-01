@@ -1,0 +1,11 @@
+@import '../../../styles/settings.scss';
+
+.star {
+  color: #000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.star--active {
+  color: $primary;
+}

@@ -6,19 +6,26 @@ import {
   addToCompare,
   removeFromCompare,
 } from '../../../redux/compareRedux';
-import { toggleFavorite } from '../../../redux/productsRedux';
+import { toggleFavorite, setUserRating } from '../../../redux/productsRedux';
 import buttonStyles from '../Button/Button.module.scss';
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faStar,
-  faExchangeAlt,
-  faShoppingBasket,
-} from '@fortawesome/free-solid-svg-icons';
-import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import StarRating from '../StarRating/StarRating';
 
-const ProductBox = ({ id, name, price, promo, stars, oldPrice, isFavorite }) => {
+const ProductBox = ({
+  id,
+  name,
+  price,
+  promo,
+  stars,
+  oldPrice,
+  isFavorite,
+  isCompared,
+  userRating,
+}) => {
   const dispatch = useDispatch();
   const compared = useSelector(getCompared);
   const isComparedActive = compared.includes(id);
@@ -40,22 +47,18 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice, isFavorite }) => 
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
-            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+            <FontAwesomeIcon icon={faShoppingBasket} /> ADD TO CART
           </Button>
         </div>
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
         <div className={styles.stars}>
-          {[1, 2, 3, 4, 5].map(i => (
-            <a key={i} href='#'>
-              {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-              )}
-            </a>
-          ))}
+          <StarRating
+            rating={stars}
+            userRating={userRating}
+            onRate={rate => dispatch(setUserRating(id, rate))}
+          />
         </div>
       </div>
       <div className={styles.line}></div>
@@ -66,14 +69,14 @@ const ProductBox = ({ id, name, price, promo, stars, oldPrice, isFavorite }) => 
             onClick={handleToggleFavorite}
             className={isFavorite ? buttonStyles.favoriteActive : ''}
           >
-            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faHeart} /> Favorite
           </Button>
           <Button
             variant='outline'
             className={isComparedActive ? buttonStyles.active : ''}
             onClick={handleToggleCompare}
           >
-            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+            <FontAwesomeIcon icon={faExchangeAlt} /> Add to compare
           </Button>
         </div>
         <div className={styles.price}>
@@ -96,6 +99,8 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
+  isCompared: PropTypes.bool,
+  userRating: PropTypes.number,
 };
 
 export default ProductBox;
