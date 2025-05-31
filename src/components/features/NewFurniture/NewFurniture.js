@@ -40,7 +40,7 @@ class NewFurniture extends React.Component {
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
 
-    //NOTE: wartości są orientacyjne - mogą się zmienić po wdrozeniu layoutu RWD z zadania 17
+    // NOTE: The values are approximate – they may change after implementing the RWD layout from task 17
     const itemsPerDevice = {
       desktop: 8,
       tablet: 3,
