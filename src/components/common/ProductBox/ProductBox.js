@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getCompared,
+  addToCompare,
+  removeFromCompare,
+} from '../../../redux/compareRedux';
+import { toggleFavorite } from '../../../redux/productsRedux';
+import buttonStyles from '../Button/Button.module.scss';
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,16 +17,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
-import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
-  const dispatch=useDispatch();
+const ProductBox = ({ id, name, price, promo, stars, oldPrice, isFavorite }) => {
+  const dispatch = useDispatch();
+  const compared = useSelector(getCompared);
+  const isComparedActive = compared.includes(id);
 
   const handleToggleFavorite = e => {
     e.preventDefault();
-    dispatch(toggleFavorite(id))
-  }
+    dispatch(toggleFavorite(id));
+  };
+
+  const handleToggleCompare = e => {
+    e.preventDefault();
+    dispatch(isComparedActive ? removeFromCompare(id) : addToCompare(id));
+  };
 
   return (
     <div className={styles.root}>
@@ -49,10 +61,18 @@ const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline'onClick={handleToggleFavorite} className={favorite ? styles.favoriteActive : ''}>
-            <FontAwesomeIcon icon={faHeart} >Favorite</FontAwesomeIcon>
+          <Button
+            variant='outline'
+            onClick={handleToggleFavorite}
+            className={isFavorite ? buttonStyles.favoriteActive : ''}
+          >
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            className={isComparedActive ? buttonStyles.active : ''}
+            onClick={handleToggleCompare}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
@@ -65,17 +85,17 @@ const ProductBox = ({ id,name, price, promo, stars, oldPrice, favorite}) => {
       </div>
     </div>
   );
-}
+};
 
 ProductBox.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   children: PropTypes.node,
   name: PropTypes.string,
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
-  favorite: PropTypes.bool,
+  isFavorite: PropTypes.bool,
 };
 
 export default ProductBox;

@@ -8,14 +8,30 @@ class NewFurniture extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'bed',
+    animation: '',
   };
 
   handlePageChange(newPage) {
-    this.setState({ activePage: newPage });
+    this.setState({ animation: styles.fadeOut });
+
+    setTimeout(() => {
+      this.setState({
+        activePage: newPage,
+        animation: styles.fadeIn,
+      });
+    }, 500);
   }
 
   handleCategoryChange(newCategory) {
-    this.setState({ activeCategory: newCategory });
+    this.setState({ animation: styles.fadeOut });
+
+    setTimeout(() => {
+      this.setState({
+        activeCategory: newCategory,
+        activePage: 0,
+        animation: styles.fadeIn,
+      });
+    }, 500);
   }
 
   render() {
@@ -26,10 +42,10 @@ class NewFurniture extends React.Component {
 
     //NOTE: wartości są orientacyjne - mogą się zmienić po wdrozeniu layoutu RWD z zadania 17
     const itemsPerDevice = {
-      desktop:8,
-      tablet:3,
-      mobile:2,
-    }
+      desktop: 8,
+      tablet: 3,
+      mobile: 2,
+    };
 
     const itemsPerPage = itemsPerDevice[device];
     const pagesCount = Math.ceil(categoryProducts.length / itemsPerPage);
@@ -80,7 +96,7 @@ class NewFurniture extends React.Component {
               </div>
             </div>
           </div>
-          <div className='row'>
+          <div className={`row ${this.state.animation}`}>
             {visibleProducts.map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
