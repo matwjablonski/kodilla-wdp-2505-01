@@ -471,6 +471,8 @@ const initialState = {
   cart: {
     products: [],
   },
+  device: 'desktop',
+
   compare: [],
 };
 

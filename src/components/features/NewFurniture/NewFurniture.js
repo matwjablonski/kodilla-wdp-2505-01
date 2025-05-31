@@ -35,11 +35,25 @@ class NewFurniture extends React.Component {
   }
 
   render() {
-    const { categories, products } = this.props;
+    const { categories, products, device } = this.props;
     const { activeCategory, activePage } = this.state;
 
     const categoryProducts = products.filter(item => item.category === activeCategory);
-    const pagesCount = Math.ceil(categoryProducts.length / 8);
+
+    // NOTE: The values are approximate – they may change after implementing the RWD layout from task 17
+    const itemsPerDevice = {
+      desktop: 8,
+      tablet: 3,
+      mobile: 2,
+    };
+
+    const itemsPerPage = itemsPerDevice[device];
+    const pagesCount = Math.ceil(categoryProducts.length / itemsPerPage);
+
+    const visibleProducts = categoryProducts.slice(
+      activePage * itemsPerPage,
+      (activePage + 1) * itemsPerPage
+    );
 
     const dots = [];
     for (let i = 0; i < pagesCount; i++) {
@@ -83,7 +97,7 @@ class NewFurniture extends React.Component {
             </div>
           </div>
           <div className={`row ${this.state.animation}`}>
-            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
+            {visibleProducts.map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
               </div>
@@ -114,6 +128,7 @@ NewFurniture.propTypes = {
       newFurniture: PropTypes.bool,
     })
   ),
+  device: PropTypes.string,
 };
 
 NewFurniture.defaultProps = {
