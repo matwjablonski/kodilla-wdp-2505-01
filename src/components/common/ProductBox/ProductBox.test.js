@@ -13,7 +13,8 @@ describe('Component ProductBox', () => {
       stars: 2,
       promo: 'SALE',
       oldPrice: 120,
-      favorite: false,
+      isFavorite: false,
+      isCompared: false,
       userRating: null,
     };
 
@@ -22,6 +23,7 @@ describe('Component ProductBox', () => {
         <ProductBox {...mockProps} />
       </Provider>
     );
+
     expect(component).toBeTruthy();
   });
 });

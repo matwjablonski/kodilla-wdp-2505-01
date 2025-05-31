@@ -5,9 +5,11 @@ export const getCount = ({ products }) => products.length;
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
 
-const TOGGLE_FAVORITE = 'products/TOGGLE_FAVORITE';
+/* action types */
+const TOGGLE_FAVORITE = 'app/products/TOGGLE_FAVORITE';
 const SET_USER_RATING = 'app/products/SET_USER_RATING';
 
+/* action creators */
 export const toggleFavorite = id => ({
   type: TOGGLE_FAVORITE,
   payload: id,
@@ -22,10 +24,9 @@ export const setUserRating = (productId, rating) => ({
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {
     case TOGGLE_FAVORITE:
-      console.log('toggle favorite for id:', action.payload);
       return statePart.map(product =>
         product.id === action.payload
-          ? { ...product, favorite: !product.favorite }
+          ? { ...product, isFavorite: !product.isFavorite }
           : product
       );
     case SET_USER_RATING: {

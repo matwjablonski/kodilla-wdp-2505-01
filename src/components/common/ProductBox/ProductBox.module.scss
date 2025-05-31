@@ -22,7 +22,7 @@
       top: -30px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #292929;
+      background-color: $form-border-color;
       border-radius: 50%;
       color: #ffffff;
       padding: 30px 15px 5px 15px;
@@ -31,10 +31,8 @@
     .buttons {
       display: flex;
       justify-content: space-between;
-
       opacity: 0;
       pointer-events: none;
-
     }
   }
 
@@ -59,7 +57,7 @@
 
   .line {
     margin: 0 10px;
-    border-bottom: 1px solid #2a2a2a;
+    border-bottom: 1px solid $text-color;
     position: relative;
 
     &::before {
@@ -80,7 +78,7 @@
 
     .oldPrice {
       color: #888;
-      text-decoration: line-through black;
+      text-decoration: line-through $text-color;
       font-size: 14px;
     }
   }
@@ -111,5 +109,15 @@
 
   .favoriteActive {
     background-color:$primary;
+  }
+}
+
+.active {
+  background-color: $primary;
+  color: #ffffff;
+  border: 1px solid $text-color;
+
+  svg {
+    color: #ffffff;
   }
 }
