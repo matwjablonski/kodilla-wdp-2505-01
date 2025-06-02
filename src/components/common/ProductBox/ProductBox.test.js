@@ -1,24 +1,29 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductBox from './ProductBox';
 import { Provider } from 'react-redux';
 import store from '../../../redux/store';
+import ProductBox from './ProductBox';
 
 describe('Component ProductBox', () => {
   it('should render without crashing', () => {
+    const mockProps = {
+      id: 'test-id',
+      name: 'Test product',
+      price: 100,
+      stars: 2,
+      promo: 'SALE',
+      oldPrice: 120,
+      isFavorite: false,
+      isCompared: false,
+      userRating: null,
+    };
+
     const component = shallow(
       <Provider store={store}>
-        <ProductBox
-          id='test-id'
-          name='Test Product'
-          price={100}
-          stars={4}
-          promo='SALE'
-          oldPrice={150}
-          isFavorite={false}
-        />
+        <ProductBox {...mockProps} />
       </Provider>
     );
+
     expect(component).toBeTruthy();
   });
 });
