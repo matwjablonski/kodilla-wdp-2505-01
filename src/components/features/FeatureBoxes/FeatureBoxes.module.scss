@@ -1,5 +1,23 @@
 @import "../../../styles/settings.scss";
 
 .root {
-  padding: 5rem 0;
+  padding: 3rem 0;
+}
+
+.freeShippingBoxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  & > * {
+    flex: 1 1 calc(50% - 1rem);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 992px) {
+  .freeShippingBoxes > * {
+    flex: 1 1 20%;
+  }
 }
